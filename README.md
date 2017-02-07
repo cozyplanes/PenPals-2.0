@@ -38,4 +38,5 @@ Port 5000
 
 <hr>
 
+<img style="width: 100px; height=100px;" align="right" src="https://www.google.com//images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"/>
 Thanks to © Google, 2011 for providing part of their source code that has been modified by me.
