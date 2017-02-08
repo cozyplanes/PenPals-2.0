@@ -306,6 +306,8 @@ friendlyPix.Firebase = class {
   /**
    * Returns the users which name match the given search query as a Promise.
    */
+
+
   searchUsers(searchString, maxResults) {
     searchString = latinize(searchString).toLowerCase();
     const query = this.database.ref('/people')
@@ -334,6 +336,9 @@ friendlyPix.Firebase = class {
     });
   }
 
+  
+
+
   /**
    * Saves or updates public user data in Firebase (such as image URL, display name...).
    */
@@ -361,7 +366,19 @@ friendlyPix.Firebase = class {
     return this.database.ref(`people/${this.auth.currentUser.uid}`).update(updateData);
   }
 
-  setInfo(country,hobbies,languages,fav_quote,movies,books,about,requests){
+
+  expSearch(text){
+ const query = this.database.ref('/people').orderByChild('/country').startAt(text).endAt(text).once('value');
+return Promise.all([query]).then(results => {
+      const people = {};
+      // construct people from the two search queries results.
+      results.forEach(result => result.forEach(data => {
+        people[data.key] = data.val();
+      }));
+return people;
+  });
+}
+  setInfo(country,hobbies,languages,fav_quote,movies,books,about,requests,music){
     const updateData = {
         country: country,
         hobbies: hobbies,
@@ -370,13 +387,14 @@ friendlyPix.Firebase = class {
         movies: movies,
         books: books,
         about: about,
-        requests: requests
+        requests: requests,
+        music: music
       };
-    return this.database.ref(`people/${this.auth.currentUser.uid}/info`).update(updateData);
+    return this.database.ref(`people/${this.auth.currentUser.uid}`).update(updateData);
   }
 
-  getInfo(){
-    return this.database.ref(`people/${this.auth.currentUser.uid}/info`).once('value');
+  getInfo(){ //info about user, should echo this one back to profile according to its id
+    return this.database.ref(`people/${this.auth.currentUser.uid}`).once('value');
   }
   /**
    * Fetches a single post data.
