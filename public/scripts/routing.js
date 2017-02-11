@@ -31,6 +31,7 @@ friendlyPix.Router = class {
         const showGeneralFeed = () => friendlyPix.feed.showGeneralFeed();
         const clearFeed = () => friendlyPix.feed.clear();
         const showPost = postId => friendlyPix.post.loadPost(postId);
+        const searchDataBase = () => friendlyPix.search.searchMe();
 
         page('/', pipe(showHomeFeed, null, true),
             pipe(displayPage, {pageId: 'feed', onlyAuthed: true}));
@@ -39,6 +40,7 @@ friendlyPix.Router = class {
         page('/user/:userId', pipe(loadUser, null, true), pipe(displayPage, {pageId: 'user-info'}));
         page('/about', pipe(clearFeed, null, true), pipe(displayPage, {pageId: 'about'}));
         page('/add', pipe(displayPage, {pageId: 'add', onlyAuthed: true}));
+        page('/search',pipe(searchDataBase, null, true), pipe(displayPage,{pageId: 'search'}));
         page('*', () => page('/'));
 
         // Start routing.

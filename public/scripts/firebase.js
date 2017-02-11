@@ -145,6 +145,7 @@ friendlyPix.Firebase = class {
         friendlyPix.Firebase.USER_PAGE_POSTS_PAGE_SIZE, null, true);
   }
 
+  
   /**
    * Subscribes to receive updates to the given feed. The given `callback` function gets called
    * for each new entry on the given feed.
@@ -388,7 +389,8 @@ return people;
         books: books,
         about: about,
         requests: requests,
-        music: music
+        music: music,
+        id: this.auth.currentUser.uid
       };
     return this.database.ref(`people/${this.auth.currentUser.uid}`).update(updateData);
   }
