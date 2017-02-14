@@ -12,36 +12,32 @@ friendlyPix.Search = class {
 		$(document).ready(() => {
       // Pointers to DOM elements.
       this.pageSearch = $('#page-search');
-
+      
       // Event bindings.
       
 
     });
 
 	}
-
+	
 	searchData(){
+		
 
 	}
 
-	searchMe(){
+	
+
+	searchMe(query){
 		//TODO: LIMIT USER LIST WHEN TOO MANY! 
 		 firebase.database().ref('/people/').once('value').then(function(snapshot) {
-           	console.log(snapshot.val());
+           	var x;
            		snapshot.forEach(function(childSnapshot) {
       				var childData = childSnapshot.val();
-     				var x = JSON.stringify(childData);
-      				console.log(x);
-
-      				//TODO: for some reasons I keep getting an error on stringify
-      				QuerySearch(x,"ab");
+      					x=childData;
+      					QuerySearch(x,query);
   				});
-
-           	
     		});
 		}
-
-		
 	};
 
 friendlyPix.search = new friendlyPix.Search();

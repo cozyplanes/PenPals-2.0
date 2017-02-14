@@ -31,7 +31,7 @@ friendlyPix.Router = class {
         const showGeneralFeed = () => friendlyPix.feed.showGeneralFeed();
         const clearFeed = () => friendlyPix.feed.clear();
         const showPost = postId => friendlyPix.post.loadPost(postId);
-        const searchDataBase = () => friendlyPix.search.searchMe();
+        const searchDataBase = () => friendlyPix.search.searchData();
 
         page('/', pipe(showHomeFeed, null, true),
             pipe(displayPage, {pageId: 'feed', onlyAuthed: true}));

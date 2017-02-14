@@ -390,7 +390,8 @@ return people;
         about: about,
         requests: requests,
         music: music,
-        id: this.auth.currentUser.uid
+        id: this.auth.currentUser.uid,
+        searchPattern: country+"|"+hobbies+"|"+languages+"|"+fav_quote+"|"+movies+"|"+books+"|"+about+"|"+requests+"|"+music+"|"
       };
     return this.database.ref(`people/${this.auth.currentUser.uid}`).update(updateData);
   }
