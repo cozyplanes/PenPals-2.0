@@ -379,7 +379,7 @@ return Promise.all([query]).then(results => {
 return people;
   });
 }
-  setInfo(country,hobbies,languages,fav_quote,movies,books,about,requests,music){
+  setInfo(country,hobbies,languages,fav_quote,movies,books,about,requests,music,age){
     const updateData = {
         country: country,
         hobbies: hobbies,
@@ -390,8 +390,9 @@ return people;
         about: about,
         requests: requests,
         music: music,
+        age: age,
         id: this.auth.currentUser.uid,
-        searchPattern: country+"|"+hobbies+"|"+languages+"|"+fav_quote+"|"+movies+"|"+books+"|"+about+"|"+requests+"|"+music+"|"
+        searchPattern: country+"|"+hobbies+"|"+languages+"|"+fav_quote+"|"+movies+"|"+books+"|"+about+"|"+requests+"|"+music+"|"+age+"|"+this.auth.currentUser.displayName+"|"
       };
     return this.database.ref(`people/${this.auth.currentUser.uid}`).update(updateData);
   }

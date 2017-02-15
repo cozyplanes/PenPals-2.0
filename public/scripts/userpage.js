@@ -24,7 +24,9 @@ friendlyPix.UserPage = class {
       this.userUsername = $('.fp-user-username'); //EVENT DEFINED GETTING INFO !!!!!!!!
       this.userInfoContainer = $('.fp-user-container'); //event binding getting info! 
       //testing 
-      this.userInformationContainer=$('.fp-user-info-container');
+      this.userInformationContainer=$('#infoabout');
+      this.userInformationContainer2=$('#infoabout2');
+      this.userInformationContainer3=$('#infoabout3');
       //end testing
       this.followContainer = $('.fp-follow');
       this.noPosts = $('.fp-no-posts', this.userPage);
@@ -145,17 +147,23 @@ friendlyPix.UserPage = class {
         //the function getInfo is useless (apparantely)! idk
         this.userUsername.text(userInfo.full_name || 'Anonymous');
         this.userInfoContainer.show();
-        this.userInformationContainer.text(" country : "+userInfo.country+ 
-          " hobbies : "+userInfo.hobbies+ 
-          "languages : "+userInfo.languages + 
-          " fav_quote : "+ userInfo.fav_quote + 
-          " movies : "+userInfo.movies+
-          " books : "+userInfo.books+
-          " about : "+userInfo.about+
-          " requests : "+userInfo.requests+
-          " music : "+userInfo.music
+        this.userInformationContainer.text(userInfo.country+" | " 
+          //" "+userInfo.hobbies+ 
+          +userInfo.languages + " | "+
+          //" fav_quote : "+ userInfo.fav_quote + 
+          //" movies : "+userInfo.movies+
+          //" books : "+userInfo.books+
+          //" about : "+userInfo.about+
+          //" requests : "+userInfo.requests+
+          //" music : "+userInfo.music
+          userInfo.age + " | "
           );
         this.userInformationContainer.show();
+        this.userInformationContainer2.text(userInfo.about);
+        this.userInformationContainer2.show();
+        this.userInformationContainer3.text(" Movies I like : "+userInfo.movies+"\n"+"Books I like : "+userInfo.books+"\n"+"Music I like : "+userInfo.music+"\n"+"Quote(s) I like : "+userInfo.fav_quote+"\n"+"Requests I have : "+userInfo.requests+"\n");
+        this.userInformationContainer3.show();
+
       } else {
         var data = {
           message: 'This user does not exists.',

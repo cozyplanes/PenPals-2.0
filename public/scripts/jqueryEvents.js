@@ -19,5 +19,12 @@ $input.on('keydown', function () {
 //user is "finished typing," do something
 function doneTyping () {
   var query = $('#searchPage').val();
-  friendlyPix.search.searchMe(query);
+  var length = $('#searchPage').val().length;
+  	if ($('#searchPage').val().length == 0) {
+      $("ul").empty();
+	}
+	else{
+  	friendlyPix.search.searchMe(query);
+  }
+  
 }

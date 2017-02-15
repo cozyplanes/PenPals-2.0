@@ -359,6 +359,15 @@ a {
   align-items: center;
   color: #555;
 }
+#page-user-info .fp-add-details .mdl-card{
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  color: #555;
+  white-space: pre-wrap;
+}
 #page-user-info .fp-user-nbfollowing-container:HOVER {
   cursor: pointer;
   background-color: #eaeaea;
